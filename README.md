@@ -26,3 +26,7 @@ docker build -t pyingest .
 
 ### docker-run
 docker run pyingest /bin/sh
+
+### Elasticsearch configuration for large data ingest
+curl -H 'Content-Type: application/json' -X PUT 'http://localhost:9200/journal/_settings?master_timeout=300s&timeout=5m' -d \
+'{"index" : {"number_of_replicas" : 2} }'
