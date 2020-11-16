@@ -27,4 +27,5 @@
 #    --type="test" \
 #    json --json-lines /src/test.json
 
-elasticsearch_loader --es-host="http://X.X.X.X:9200" --index journal --type text csv /src/test.csv
+#elasticsearch_loader --es-host="http://X.X.X.X:9200" --index journal --type text csv /src/test.csv
+elasticsearch_loader --es-host="http://X.X.X.X:9200" --index journal --type _doc csv /src/test.csv
