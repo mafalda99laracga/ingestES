@@ -30,3 +30,9 @@ docker run pyingest /bin/sh
 ### Elasticsearch configuration for large data ingest
 curl -H 'Content-Type: application/json' -X PUT 'http://localhost:9200/journal/_settings?master_timeout=300s&timeout=5m' -d \
 '{"index" : {"number_of_replicas" : 2} }'
+
+### Elasticsearch free up disk space
+
+curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
+
+curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_cluster/settings -d '{ "transient": { "cluster.routing.allocation.disk.threshold_enabled": false } }'
